@@ -120,35 +120,35 @@
     },
     "vnetAddressPrefix": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "10.0.0.0/16",
       "metadata": {
         "description": "Virtual network address space in CIDR notation, example: 10.2.0.0/16"
       }
     },
     "Subnet1Name": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "sub1",
       "metadata": {
         "description": "Subnet 1 Name"
       }
     },
     "Subnet1Prefix": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "10.0.1.0/24",
       "metadata": {
         "description": "Subnet 1 Prefix in CIDR notation (if using public IP, this will be the 'WAN' or external port), example: 10.2.1.0/24"
       }
     },
     "Subnet2Name": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "sub2",
       "metadata": {
         "description": "Subnet 2 Name"
       }
     },
     "Subnet2Prefix": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "10.0.2.0/24",
       "metadata": {
         "description": "Subnet 2 Prefix in CIDR notation (if using public IP, this will be the 'WAN' or external port), example: 10.2.2.0/24"
       }
