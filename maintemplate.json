@@ -390,6 +390,9 @@
           },
           "PublicIPNewExistingOrNone": {
             "value": "[parameters('publicIPNewOrExistingOrNone')]"
+          },
+          "FortinetTags": {
+            "value": "[parameters('FortinetTags')]"
           }
         }
       }
