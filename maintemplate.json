@@ -71,14 +71,14 @@
     },
     "publicIPAddressName": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "PIPnameHere",
       "metadata": {
         "description": "Name of Public IP address resource."
       }
     },
     "publicIPAddressResourceGroup": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "PIPrgHere",
       "metadata": {
         "description": "Resource Group containing the public IP - or new resource group from above (if new public IP)"
       }
