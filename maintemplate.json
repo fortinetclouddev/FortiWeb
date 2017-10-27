@@ -276,7 +276,7 @@
       "location": "[parameters('location')]",
       "properties": {
         "ipConfigurations": "[if(equals(parameters('publicIPNewOrExistingOrNone'), 'none'), variables('NICwoPIP'), variables('NICwPIP'))]",
-        "enableIPForwarding": true
+        "enableIPForwarding": false
       }
     },
     {
@@ -302,7 +302,7 @@
             }
           }
         ],
-        "enableIPForwarding": true
+        "enableIPForwarding": false
       }
     },
     {
