@@ -10,31 +10,61 @@
     },
     "privateIp": {
       "type": "string"
+    },
+    "publicIPID": {
+      "type": "string"
+    },
+    "PublicIPNewExistingOrNone": {
+      "type": "string"
+    },
+    "FortinetTags": {
+      "type": "object"
     }
   },
   "variables": {
+    "NICwPIP": [
+      {
+        "name": "ipconfig1",
+        "properties": {
+          "privateIPAllocationMethod": "Static",
+          "privateIPAddress": "[parameters('privateIp')]",
+          "subnet": {
+            "id": "[parameters('SubnetRef')]"
+          },
+          "publicIPAddress": {
+            "id": "[variables('publicIPID')]"
+          }
+        }
+      }
+    ],
+
+    "NICwoPIP": [
+      {
+        "name": "ipconfig1",
+        "properties": {
+          "privateIPAllocationMethod": "Static",
+          "privateIPAddress": "[parameters('privateIp')]",
+          "subnet": {
+            "id": "[parameters('SubnetRef')]"
+          }
+        }
+      }
+    ]
   },
   "resources": [
     {
-      "type": "Microsoft.Network/networkInterfaces",
-      "name": "[parameters('nicName')]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
+      "apiVersion": "2017-09-01",
       "dependsOn": [
       ],
+      "tags": {
+        "provider": "[toUpper(parameters('FortinetTags').provider)]"
+      },
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('nicName')]",
+      "location": "[resourceGroup().location]",
       "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[parameters('privateIp')]",
-              "subnet": {
-                "id": "[parameters('SubnetRef')]"
-              }
-            }
-          }
-        ]
+        "ipConfigurations": "[if(equals(parameters('publicIPNewOrExistingOrNone'), 'none'), variables('NICwoPIP'), variables('NICwPIP'))]",
+        "enableIPForwarding": false
       }
     }
   ],
