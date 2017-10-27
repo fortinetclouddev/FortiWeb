@@ -14,7 +14,7 @@
     "publicIPID": {
       "type": "string"
     },
-    "PublicIPNewExistingOrNone": {
+    "publicIPNewExistingOrNone": {
       "type": "string"
     },
     "FortinetTags": {

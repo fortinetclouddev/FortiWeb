@@ -388,7 +388,7 @@
           "publicIPID": {
             "value": "[variables('publicIPID')]"
           },
-          "PublicIPNewExistingOrNone": {
+          "publicIPNewExistingOrNone": {
             "value": "[parameters('publicIPNewOrExistingOrNone')]"
           },
           "FortinetTags": {
@@ -423,7 +423,7 @@
           "publicIPID": {
             "value": "[variables('publicIPID')]"
           },
-          "PublicIPNewExistingOrNone": {
+          "publicIPNewExistingOrNone": {
             "value": "none"
           },
           "FortinetTags": {
