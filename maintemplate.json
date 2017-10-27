@@ -153,6 +153,13 @@
         "description": "Subnet 2 Prefix in CIDR notation (if using public IP, this will be the 'WAN' or external port), example: 10.2.2.0/24"
       }
     },
+    "ArtifactsBaseURI": {
+      "type": "string",
+      "metadata": {
+        "description": "The base URI where subtemplates are located"
+      },
+      "defaultValue": "https://raw.githubusercontent.com/fortinetclouddev/FortiWeb/master/"
+    },
     "FortinetTags": {
       "type": "object",
       "defaultValue": {
@@ -175,6 +182,8 @@
     "compute_AvailabilitySet_FG_Id": "[resourceId('Microsoft.Compute/availabilitySets', variables('compute_AvailabilitySet_FG_Name'))]",
 
     "publicIPID": "[resourceId(parameters('publicIPAddressResourceGroup'), 'Microsoft.Network/publicIPAddresses', parameters('publicIPAddressName'))]",
+
+    "updateIPURI": "[concat(parameters('ArtifactsBaseURI'),'update-nic.json')]",
 
     "NICwPIP": [
       {
@@ -370,7 +379,60 @@
           ]
         }
       }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "name": "UpdateNIC1",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[variables('network_NIC_fw11_Name')]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('updateIPURI')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "nicName": {
+            "value": "[variables('network_NIC_fw11_Name')]"
+          },
+          "SubnetRef": {
+            "value": "[variables('subnet1Ref')]"
+          },
+          "privateIp": {
+            "value": "[reference(concat('Microsoft.Network/networkInterfaces/', variables('network_NIC_fw11_Name'))).ipConfigurations[0].properties.privateIPAddress]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "name": "UpdateNIC1",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[variables('network_NIC_fw12_Name')]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('updateIPURI')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "nicName": {
+            "value": "[variables('network_NIC_fw12_Name')]"
+          },
+          "SubnetRef": {
+            "value": "[variables('subnet2Ref')]"
+          },
+          "privateIp": {
+            "value": "[reference(concat('Microsoft.Network/networkInterfaces/', variables('network_NIC_fw12_Name'))).ipConfigurations[0].properties.privateIPAddress]"
+          }
+        }
+      }
     }
   ]
 }
+
 
