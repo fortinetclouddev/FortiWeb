@@ -250,7 +250,7 @@
       "publicIPAddressName": "[steps('IPConfig').publicIpAddress.name]",
       "publicIPAddressType": "[steps('IPConfig').publicIPAddressTypeElement]",
       "publicIPNewOrExistingOrNone": "[steps('IPConfig').publicIpAddress.newOrExistingOrNone]",
-      "publicIPResourceGroup": "[steps('IPConfig').publicIpAddress.resourceGroup]",
+      "publicIPAddressResourceGroup": "[steps('IPConfig').publicIpAddress.resourceGroup]",
       "location": "[location()]",
       "vnetNewOrExisting": "[steps('NetworkandInstanceConfig').virtualNetwork.newOrExisting]",
       "vnetName": "[steps('NetworkandInstanceConfig').virtualNetwork.name]",
