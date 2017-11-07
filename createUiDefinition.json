@@ -6,8 +6,8 @@
       {
         "name": "VMName",
         "type": "Microsoft.Common.TextBox",
-        "label": "FortiGate VM Name",
-        "toolTip": "This is the name of the FortiGate virtual appliance.",
+        "label": "FortiWeb Instance Name",
+        "toolTip": "This is the name of the FortiWeb instance.",
         "constraints": {
           "required": true,
           "regex": "^[A-Za-z0-9]{1,15}$",
@@ -18,36 +18,36 @@
         "name": "skuSelectorElement",
         "type": "Microsoft.Common.OptionsGroup",
         "label": "PAYG/BYOL License",
-        "toolTip": "Select PAYG for on-demand/hourly billing of the FortiGate license, or BYOL to purchase a license from Fortinet separately.",
-        "defaultValue": "PAYG",
+        "toolTip": "Select PAYG for on-demand/hourly billing of the FortiWeb license, or BYOL to purchase a license from Fortinet separately.",
+        "defaultValue": "PAYG 5.8",
         "constraints": {
           "allowedValues": [
             {
-              "label": "PAYG 5.4",
+              "label": "BYOL 5.5",
               "value": {
-                "SKU": "fortinet_fg-vm_payg",
-                "Version": "5.4.6"
+                "SKU": "fortinet_fw-vm",
+                "Version": "5.5.1"
               }
             },
             {
-              "label": "PAYG 5.6",
+              "label": "BYOL 5.7",
               "value": {
-                "SKU": "fortinet_fg-vm_payg",
-                "Version": "5.6.2"
+                "SKU": "fortinet_fw-vm",
+                "Version": "5.7.1"
               }
             },
             {
-              "label": "BYOL 5.4",
+              "label": "BYOL 5.8",
               "value": {
-                "SKU": "fortinet_fg-vm",
-                "Version": "5.4.6"
+                "SKU": "fortinet_fw-vm",
+                "Version": "5.8.1"
               }
             },
             {
-              "label": "BYOL 5.6",
+              "label": "PAYG 5.8",
               "value": {
-                "SKU": "fortinet_fg-vm",
-                "Version": "5.6.2"
+                "SKU": "fortinet_fw-vm_payg",
+                "Version": "5.8.1"
               }
             }
           ]
@@ -56,8 +56,8 @@
       {
         "name": "adminUsername",
         "type": "Microsoft.Compute.UserNameTextBox",
-        "label": "FortiGate administrative username",
-        "toolTip": "Admin username for the FortiGate virtual appliance. Must not be 'admin' nor 'root'.",
+        "label": "FortiWeb administrative username",
+        "toolTip": "Admin username for the FortiWeb instance. Must not be 'admin' nor 'root'.",
         "osPlatform": "Linux",
         "constraints": {
           "required": true
@@ -67,10 +67,10 @@
         "name": "passwordElement",
         "type": "Microsoft.Common.PasswordBox",
         "label": {
-          "password": "FortiGate Password",
+          "password": "FortiWeb Password",
           "confirmPassword": "Confirm Password"
         },
-        "toolTip": "Administrative account password for the FortiGate virtual appliance",
+        "toolTip": "Administrative account password for the FortiWeb instance",
         "constraints": {
           "required": true,
           "regex": "^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\\d\\W])|(?=.*\\W)(?=.*\\d))|(?=.*\\W)(?=.*[A-Z])(?=.*\\d)).{12,123}$",
@@ -100,10 +100,10 @@
             },
             "toolTip": {
               "virtualNetwork": "Virtual Network Name",
-              "subnets": "Subnets requied for the FortiGate solution"
+              "subnets": "Subnets requied for the FortiWeb solution"
             },
             "defaultValue": {
-              "name": "FortigateProtectedVNet",
+              "name": "FortiWebProtectedVNet",
               "addressPrefixSize": "/16"
             },
             "constraints": {
@@ -123,9 +123,9 @@
                 }
               },
               "subnet2": {
-                "label": "Internal Subnet",
+                "label": "Inside Subnet",
                 "defaultValue": {
-                  "name": "InternalSubnet",
+                  "name": "InsideSubnet",
                   "addressPrefixSize": "/24"
                 },
                 "constraints": {
@@ -142,8 +142,9 @@
             "label": "Virtual machine size",
             "toolTip": "The size of virtual machine to provision.",
             "recommendedSizes": [
-              "Standard_D3_v2",
-              "Standard_D4_v2"
+              "Standard_F2s_v2",
+              "Standard_F4s_v2",
+              "Standard_F8s_v2"
             ],
             "constraints": {
               "allowedSizes": [
@@ -162,14 +163,24 @@
                 "Standard_F1s",
                 "Standard_F2s",
                 "Standard_F4s",
-                "Standard_F8s"
+                "Standard_F8s",
+                "Standard_F16s",
+                "Standard_F2s_v2",
+                "Standard_F4s_v2",
+                "Standard_F8s_v2",
+                "Standard_F16s_v2",
+                "Standard_E2_v3",
+                "Standard_E4_v3",
+                "Standard_E8_v3",
+                "Standard_E16_v3"
+
               ]
             },
             "osPlatform": "Linux",
             "imageReference": {
               "publisher": "Fortinet",
-              "offer": "fortinet_fortigate-vm_v5",
-              "sku": "fortinet_fg-vm"
+              "offer": "fortinet_fortiweb-vm_v5",
+              "sku": "fortinet_fw-vm"
             },
             "count": "1"
           }
@@ -177,9 +188,9 @@
       },
       {
         "name": "IPConfig",
-        "label": "FortiGate IP Address Assignments",
+        "label": "FortiWeb IP Address Assignments",
         "subLabel": {
-          "preValidation": "Configure the Public IP and the IP Addresses for each NIC on the FortiGate",
+          "preValidation": "Configure the Public IP",
           "postValidation": "Done"
         },
         "bladeTitle": "IP Assignment",
@@ -195,7 +206,7 @@
               "publicIpAddress": "Name of the public IP address object"
             },
             "defaultValue": {
-              "publicIpAddressName": "publicip-fortigate"
+              "publicIpAddressName": "publicip-fortiweb"
             },
             "constraints": {
               "required": {
@@ -230,18 +241,16 @@
       }
     ],
     "outputs": {
-      "FortiGateName": "[basics('VMName')]",
+      "FortiWebInstanceName": "[basics('VMName')]",
       "adminUsername": "[basics('adminUsername')]",
       "adminPassword": "[basics('passwordElement')]",
-      "FortiGateImageSKU": "[basics('skuSelectorElement').SKU]",
-      "FortiGateImageVersion": "[basics('skuSelectorElement').Version]",
+      "FortiWebImageSKU": "[basics('skuSelectorElement').SKU]",
+      "FortiWebImageVersion": "[basics('skuSelectorElement').Version]",
       "instanceType": "[steps('NetworkandInstanceConfig').vmSize]",
       "publicIPAddressName": "[steps('IPConfig').publicIpAddress.name]",
       "publicIPAddressType": "[steps('IPConfig').publicIPAddressTypeElement]",
       "publicIPNewOrExistingOrNone": "[steps('IPConfig').publicIpAddress.newOrExistingOrNone]",
       "publicIPResourceGroup": "[steps('IPConfig').publicIpAddress.resourceGroup]",
-      "fortiGateIP1": "[steps('NetworkandInstanceConfig').virtualNetwork.subnets.subnet1.startAddress]",
-      "fortiGateIP2": "[steps('NetworkandInstanceConfig').virtualNetwork.subnets.subnet2.startAddress]",
       "location": "[location()]",
       "vnetNewOrExisting": "[steps('NetworkandInstanceConfig').virtualNetwork.newOrExisting]",
       "vnetName": "[steps('NetworkandInstanceConfig').virtualNetwork.name]",
