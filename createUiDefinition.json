@@ -17,8 +17,8 @@
       {
         "name": "skuSelectorElement",
         "type": "Microsoft.Common.OptionsGroup",
-        "label": "PAYG/BYOL License",
-        "toolTip": "Select PAYG for on-demand/hourly billing of the FortiWeb license, or BYOL to purchase a license from Fortinet separately.",
+        "label": "Version",
+        "toolTip": "Only BYOL licenses are available currently.  This requires you to purchase a license from Fortinet separately.",
         "defaultValue": "PAYG 5.8",
         "constraints": {
           "allowedValues": [
@@ -34,20 +34,6 @@
               "value": {
                 "SKU": "fortinet_fw-vm",
                 "Version": "5.7.1"
-              }
-            },
-            {
-              "label": "BYOL 5.8",
-              "value": {
-                "SKU": "fortinet_fw-vm",
-                "Version": "5.8.1"
-              }
-            },
-            {
-              "label": "PAYG 5.8",
-              "value": {
-                "SKU": "fortinet_fw-vm_payg",
-                "Version": "5.8.1"
               }
             }
           ]
@@ -164,15 +150,12 @@
                 "Standard_F2s",
                 "Standard_F4s",
                 "Standard_F8s",
-                "Standard_F16s",
                 "Standard_F2s_v2",
                 "Standard_F4s_v2",
                 "Standard_F8s_v2",
-                "Standard_F16s_v2",
                 "Standard_E2_v3",
                 "Standard_E4_v3",
-                "Standard_E8_v3",
-                "Standard_E16_v3"
+                "Standard_E8_v3"
 
               ]
             },
