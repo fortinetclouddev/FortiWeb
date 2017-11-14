@@ -158,7 +158,7 @@
       "metadata": {
         "description": "The base URI where subtemplates are located"
       },
-      "defaultValue": "https://raw.githubusercontent.com/fortinetclouddev/FortiWeb/master"
+      "defaultValue": "https://raw.githubusercontent.com/fortinetclouddev/FortiWeb/5.2.0"
     },
     "FortinetTags": {
       "type": "object",

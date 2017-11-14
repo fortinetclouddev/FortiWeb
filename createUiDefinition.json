@@ -19,7 +19,7 @@
         "type": "Microsoft.Common.OptionsGroup",
         "label": "Version",
         "toolTip": "Only BYOL licenses are available currently.  This requires you to purchase a license from Fortinet separately.",
-        "defaultValue": "PAYG 5.8",
+        "defaultValue": "BYOL 5.7",
         "constraints": {
           "allowedValues": [
             {
@@ -142,6 +142,12 @@
                 "Standard_D2_v2",
                 "Standard_D3_v2",
                 "Standard_D4_v2",
+                "Standard_D2_v3",
+                "Standard_D4_v3",
+                "Standard_D8_v3",
+                "Standard_D2s_v3",
+                "Standard_D4s_v3",
+                "Standard_D8s_v3",
                 "Standard_F1",
                 "Standard_F2",
                 "Standard_F4",
@@ -155,7 +161,10 @@
                 "Standard_F8s_v2",
                 "Standard_E2_v3",
                 "Standard_E4_v3",
-                "Standard_E8_v3"
+                "Standard_E8_v3",
+                "Standard_E2s_v3",
+                "Standard_E4s_v3",
+                "Standard_E8s_v3"
 
               ]
             },
