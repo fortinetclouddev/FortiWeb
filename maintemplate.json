@@ -158,7 +158,7 @@
       "metadata": {
         "description": "The base URI where subtemplates are located"
       },
-      "defaultValue": "https://raw.githubusercontent.com/fortinetclouddev/FortiWeb/master/"
+      "defaultValue": "https://raw.githubusercontent.com/fortinetclouddev/FortiWeb/master"
     },
     "FortinetTags": {
       "type": "object",
@@ -183,7 +183,7 @@
 
     "publicIPID": "[resourceId(parameters('publicIPAddressResourceGroup'), 'Microsoft.Network/publicIPAddresses', parameters('publicIPAddressName'))]",
 
-    "updateIPURI": "[concat(parameters('ArtifactsBaseURI'),'update-nic.json')]"
+    "updateIPURI": "[concat(parameters('ArtifactsBaseURI'),'/update-nic.json')]"
 
   },
   "resources": [
