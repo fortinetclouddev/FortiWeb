@@ -18,22 +18,29 @@
         "name": "skuSelectorElement",
         "type": "Microsoft.Common.OptionsGroup",
         "label": "Version",
-        "toolTip": "Only BYOL licenses are available currently.  This requires you to purchase a license from Fortinet separately.",
-        "defaultValue": "BYOL 5.7",
+        "toolTip": "BYOL licenses must be purchased through a Fortinet Channel Partner separately.  PAYG licensing is billed at an additional hourly rate through your Azure subscription.",
+        "defaultValue": "FortiWeb 5.8.6 (BYOL)",
         "constraints": {
           "allowedValues": [
             {
-              "label": "BYOL 5.5",
-              "value": {
-                "SKU": "fortinet_fw-vm",
-                "Version": "5.5.1"
-              }
-            },
-            {
-              "label": "BYOL 5.7",
+              "label": "FortiWeb 5.7.1 (BYOL)",
               "value": {
                 "SKU": "fortinet_fw-vm",
                 "Version": "5.7.1"
+              }
+            },
+            {
+              "label": "FortiWeb 5.8.6 (BYOL)",
+              "value": {
+                "SKU": "fortinet_fw-vm",
+                "Version": "5.8.6"
+              }
+            },
+            {
+              "label": "FortiWeb 5.8.6 (PAYG)",
+              "value": {
+                "SKU": "fortinet_fw-vm_payg",
+                "Version": "5.8.6"
               }
             }
           ]
@@ -247,11 +254,13 @@
       "vnetNewOrExisting": "[steps('NetworkandInstanceConfig').virtualNetwork.newOrExisting]",
       "vnetName": "[steps('NetworkandInstanceConfig').virtualNetwork.name]",
       "vnetResourceGroup": "[steps('NetworkandInstanceConfig').virtualNetwork.resourceGroup]",
-      "vnetAddressPrefix": "[steps('NetworkandInstanceConfig').virtualNetwork.addressPrefix]",
+      "vnetAddressPrefixes": "[steps('NetworkInstanceConfig').virtualNetwork.addressPrefixes]",
       "Subnet1Name": "[steps('NetworkandInstanceConfig').virtualNetwork.subnets.subnet1.name]",
       "Subnet1Prefix": "[steps('NetworkandInstanceConfig').virtualNetwork.subnets.subnet1.addressPrefix]",
       "Subnet2Name": "[steps('NetworkandInstanceConfig').virtualNetwork.subnets.subnet2.name]",
-      "Subnet2Prefix": "[steps('NetworkandInstanceConfig').virtualNetwork.subnets.subnet2.addressPrefix]"
+      "Subnet2Prefix": "[steps('NetworkandInstanceConfig').virtualNetwork.subnets.subnet2.addressPrefix]",
+      "FortiWebIPSub1": "[steps('NetworkInstanceConfig').virtualNetwork.subnets.subnet1.startAddress]",
+      "FortiWebIPSub2": "[steps('NetworkInstanceConfig').virtualNetwork.subnets.subnet2.startAddress]"
     }
   }
 }
