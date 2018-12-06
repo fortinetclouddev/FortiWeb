@@ -20,7 +20,7 @@
         "type": "Microsoft.Common.OptionsGroup",
         "label": "Version",
         "toolTip": "BYOL licenses must be purchased through a Fortinet Channel Partner separately.  PAYG licensing is billed at an additional hourly rate through your Azure subscription.",
-        "defaultValue": "FortiWeb 5.8.6 (BYOL)",
+        "defaultValue": "FortiWeb 6.0.2 (BYOL)",
         "constraints": {
           "allowedValues": [
             {
@@ -42,6 +42,20 @@
               "value": {
                 "SKU": "fortinet_fw-vm_payg",
                 "Version": "5.8.6"
+              }
+            },
+                        {
+              "label": "FortiWeb 6.0.2 (BYOL)",
+              "value": {
+                "SKU": "fortinet_fw-vm",
+                "Version": "6.0.2"
+              }
+            },
+            {
+              "label": "FortiWeb 6.0.2 (PAYG)",
+              "value": {
+                "SKU": "fortinet_fw-vm_payg",
+                "Version": "6.0.2"
               }
             }
           ]
